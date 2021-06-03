@@ -1,0 +1,44 @@
+
+<div style="text-align: left;">
+  <form [formGroup]="searchForm">
+  <div class="row">
+    <div class="col-md-3">
+      <label>Child :</label>
+      <input type="text" class="form-control" [(ngModel)]="filterdata" placeholder="Search Text"  formControlName="search" (keyup)="search($event)">
+  </div>
+  <div class="col-md-3">
+    <label style="position: absolute;
+    bottom: -44px;
+    left: -360px;">Selected Data :  {{this.selectedname}}</label>
+   
+</div>
+  </div> 
+  
+</form>
+</div>
+<br>
+<div class="container" style="margin-right: 0px;">
+    <h2>Input Text:{{this.value}}</h2> 
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>UserName</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody >
+     <tr *ngFor="let name of names | filter : filterdata" style="cursor: pointer;">
+       <td>{{name.id}}</td>
+       <td>{{name.name}}</td>
+       <td>{{name.username}}</td>
+       <td>{{name.email}}</td>
+       <td>{{name.phone}}</td>
+       <td><button class="btn btn-primary" style="cursor: pointer;" (click)="SelectedName(name)">Click</button></td>
+     </tr>
+      </tbody>
+    </table>
+  </div>
+  
